@@ -14,7 +14,6 @@ import { z } from "zod";
 
 const loginSchema = z.object({
   email: z.string().email(),
-  name: z.string().min(3),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters long",
   })
@@ -34,9 +33,11 @@ export function App() {
 
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
-    const { email, password, name } = data
+    const { email, password } = data
     toast("Login realizado com sucesso", {
-      description: `Olá ${name}, seus dados: email: ${email} \n senha: ${password}`,
+      description: 
+        <p>Seus dados: <br/> email: {email} <br/> senha: {password} </p>
+      ,
       icon: <Check />,
       action: {
         label: "Fechar",
@@ -48,25 +49,17 @@ export function App() {
   }
 
   return (
-    <main className="w-full h-dvh grid px-4 place-content-center ">
+    <main className="w-full h-dvh grid px-4 font-poppins place-content-center">
       <form onSubmit={handleSubmit(getLoginData)} className="border shadow-md p-4 space-y-4 rounded-lg animate-fadeIn">
         <header>
-          <h1 className="font-bold">
+          <h1 className="font-poppins">
             Entre com sua conta
           </h1>
-          <p className="text-sm text-zinc-400">
+          <p className="text-sm text-zinc-400 font-poppins">
             Utilize seu email e senha ou entre com o GitHub
           </p>
         </header>
-        <div>
-          <Label className="font-semibold text-sm" htmlFor="name">
-            Nome
-          </Label>
-          <Input required
-            type="text"
-            {...register('name')} id="name"
-            placeholder="Digite seu nome" />
-        </div>
+     
         <div>
           <Label className="font-semibold text-sm" htmlFor="email">
             E-mail
@@ -99,11 +92,11 @@ export function App() {
         </div>
         <Separator className="h-[1.2px] bg-border" />
         <footer className="w-full grid">
-          <Button>
+          <Button className="font-poppins">
             {isLoading ? <CircleNotch size={14} className="animate-spin" /> : "Cadastrar"}
           </Button>
           <span className="text-sm text-zinc-500/80 mx-auto py-1">ou</span>
-          <Button variant={"outline"} className="border gap-1">
+          <Button variant={"outline"} className="border gap-1 bg-secondary font-poppins">
             <div className="w-5">
               <img src={Logo} className="bg-cover" />
             </div>

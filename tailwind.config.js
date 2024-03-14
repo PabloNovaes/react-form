@@ -18,7 +18,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: "Poppins, sans-serif"
+        poppins: "Poppins, sans-serif",
+        telegraf: "Telegraf",
+        'telegraf-light': "Telegraf-light",
+        'telegraf-bold': "Telegraf-bold",
       },
       colors: {
         border: "hsl(var(--border))",
