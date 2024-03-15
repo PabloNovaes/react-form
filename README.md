@@ -1,3 +1,3 @@
-# React Form
+# Ts Form
 
-A simple project to practice use react-hook-form and Zod
+Projeto simples de um formulario feito usando React + Ts, juntamente com Zod e Shadcn-ui 
